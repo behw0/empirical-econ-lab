@@ -10,13 +10,11 @@ Minha formação em Ciências Econômicas me fornece a base teórica, e este esp
 
 Atualmente, este "lab" inclui os seguintes projetos principais (cada um em sua respectiva pasta):
 
-* **Previsão da Inflação (IPCA)** (`/inflation-forecast`)
+* **Previsão da Inflação (IPCA)**
     * Descrição: Desenvolvimento de modelos para prever a variação mensal do IPCA brasileiro.
     * Status: [Versão intermediária com Regressão Linear e features macroeconômicas concluída. Próximos passos incluem modelos mais avançados.]
     * [Link para o README específico do projeto de inflação](./inflation-forecast/README.md)
 
-
-*(Adicione mais projetos à medida que os desenvolve)*
 
 ## Objetivos Gerais do Lab:
 * Aplicar métodos quantitativos a problemas econômicos.
