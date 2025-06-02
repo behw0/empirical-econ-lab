@@ -10,11 +10,10 @@ Minha formação em Ciências Econômicas me fornece a base teórica, e este esp
 
 Atualmente, este "lab" inclui os seguintes projetos principais (cada um em sua respectiva pasta):
 
-* **Previsão da Inflação (IPCA)**
-    * Descrição: Desenvolvimento de modelos para prever a variação mensal do IPCA brasileiro.
-    * Status: [Versão intermediária com Regressão Linear e features macroeconômicas concluída. Próximos passos incluem modelos mais avançados.]
-    * [Link para o README específico do projeto de inflação](./inflation-forecast/README.md)
-
+* **Previsão da Inflação (IPCA)** (Pasta: [`/inflation-forecast`](./inflation-forecast/))
+    * Descrição: Desenvolvimento de modelos para prever a variação mensal do IPCA brasileiro, desde modelos lineares simples até abordagens mais avançadas com Random Forest.
+    * Status: **Versão avançada com Random Forest Otimizado e features macroeconômicas concluída (MAE: 0.1262, RMSE: 0.1799 no teste final).** Próximos passos incluem explorar mais features e modelos como SARIMAX ou XGBoost.
+    * [Leia mais sobre este projeto (README específico)](./inflation-forecast/README.md)
 
 ## Objetivos Gerais do Lab:
 * Aplicar métodos quantitativos a problemas econômicos.
