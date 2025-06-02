@@ -1,16 +1,5 @@
 # Previsão da Inflação (IPCA) no Brasil
-
-## Descrição do Projeto
-
-Este projeto explora a construção de modelos para prever a variação mensal do IPCA (Índice Nacional de Preços ao Consumidor Amplo), o índice oficial de inflação do Brasil. Foram desenvolvidas diferentes versões do modelo, começando com uma abordagem simples e progredindo para a inclusão de variáveis macroeconômicas exógenas.
-
-## Objetivos
-* Coletar e tratar séries históricas relevantes (IPCA, Selic, Câmbio).
-* Realizar análises exploratórias dos dados.
-* Implementar engenharia de features, incluindo lags.
-* Treinar e avaliar modelos de Regressão Linear.
-* Comparar o desempenho dos modelos.
-* Documentar o processo e os aprendizados.
+... (Mantenha a Descrição do Projeto, Objetivos, etc., que você já tem) ...
 
 ## Versões do Modelo
 
@@ -25,13 +14,28 @@ Este projeto explora a construção de modelos para prever a variação mensal d
 
 ### 2. Modelo Intermediário (`ipca_inflation_forecast_intermediary.ipynb`)
 * **Features Utilizadas:** Lags do IPCA (3 lags), lags da Taxa Selic (2 lags da média mensal da taxa diária) e lags da Taxa de Câmbio (2 lags da média mensal USD/BRL).
-* **Período dos Dados:** Janeiro de 2000 a Abril de 2025 (para IPCA) e dados correspondentes para Selic e Câmbio.
+* **Período dos Dados:** Janeiro de 2000 a Abril de 2025.
 * **Algoritmo:** Regressão Linear.
 * **Resultados no Conjunto de Teste (24 meses):**
     * MAE: `0.2739` p.p.
     * RMSE: `0.3534` p.p.
-* **Análise:** A inclusão das features de Selic e Câmbio, neste modelo linear simples, resultou em uma pequena piora no desempenho em comparação com o modelo básico. Isso sugere que a relação dessas variáveis com o IPCA pode ser mais complexa e não-linear, ou que a especificação dos lags e o tratamento das variáveis precisam ser refinados.
+* **Análise:** A inclusão das features de Selic e Câmbio, neste modelo linear simples, resultou em uma pequena piora no desempenho.
 * **Link para o Notebook:** [ipca_inflation_forecast_intermediary.ipynb](ipca_inflation_forecast_intermediary.ipynb)
+
+### 3. Modelo Avançado (`ipca_inflation_forecast_advanced.ipynb`)
+* **Features Utilizadas:** Lags do IPCA (3 lags), lags da Taxa Selic (2 lags da média mensal da taxa diária) e lags da Taxa de Câmbio (2 lags da média mensal USD/BRL) - mesmo conjunto do intermediário.
+* **Período dos Dados:** Janeiro de 2000 a Abril de 2025.
+* **Algoritmo:** Random Forest Regressor com hiperparâmetros otimizados via GridSearchCV e validação cruzada para séries temporais (TimeSeriesSplit).
+* **Melhores Hiperparâmetros Encontrados:**
+    * `max_depth`: `10`
+    * `min_samples_leaf`: `2`
+    * `min_samples_split`: `5`
+    * `n_estimators`: `100`
+* **Resultados no Conjunto de Teste Final (24 meses):**
+    * MAE: `0.1262` p.p.
+    * RMSE: `0.1799` p.p.
+* **Análise:** O Random Forest otimizado apresentou uma melhora significativa no desempenho em relação aos modelos lineares, demonstrando a capacidade de um modelo não-linear em capturar relações mais complexas com as features macroeconômicas.
+* **Link para o Notebook:** [ipca_inflation_forecast_advanced.ipynb](ipca_inflation_forecast_advanced.ipynb)
 
 ## Tecnologias e Bibliotecas Utilizadas
 * **Linguagem:** Python 3
@@ -48,10 +52,12 @@ Este projeto explora a construção de modelos para prever a variação mensal d
 2.  Abra-o em um ambiente compatível (Google Colab, Jupyter Notebook/Lab).
 3.  Execute as células do notebook em ordem. A biblioteca `python-bcb` será instalada se necessário.
 
-## Próximos Passos e Trabalhos Futuros (para versões avançadas)
-* Testar modelos mais sofisticados (Random Forest, XGBoost, SARIMA).
-* Refinar a engenharia de features (diferentes lags, transformações, mais variáveis).
-* Implementar validação cruzada para séries temporais.
+* **Refinamento do Modelo Avançado:**
+    * Testar outras combinações de hiperparâmetros para o Random Forest.
+    * Aplicar engenharia de features mais sofisticada (transformações para estacionariedade, padronização, novas variáveis como expectativas do Focus, etc.).
+    * Analisar a importância das features do modelo otimizado para possível seleção.
+* **Explorar Outros Modelos:** Testar algoritmos como XGBoost, LightGBM, ou modelos econométricos como SARIMAX ou Prophet.
+* **Comparação Robusta:** Implementar um framework de backtesting mais completo.
 
 ## Autor
 * Lucas Bernardo
