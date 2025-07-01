@@ -1,5 +1,5 @@
 # Previsão da Inflação (IPCA) no Brasil
-... (Mantenha a Descrição do Projeto, Objetivos, etc., que você já tem) ...
+
 
 ## Versões do Modelo
 
