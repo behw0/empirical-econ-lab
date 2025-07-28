@@ -1,4 +1,4 @@
-# 🔬 Empirical Econ Lab de Lucas Bernardo
+# 🔬 Empirical Econ Lab
 
 ![Static Badge](https://img.shields.io/badge/Área-Economia%20Empírica-blue)
 ![Static Badge](https://img.shields.io/badge/Ferramentas-Python%20%7C%20Data%20Science-orange)
