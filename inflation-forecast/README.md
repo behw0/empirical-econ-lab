@@ -1,64 +1,64 @@
-# Previsão da Inflação (IPCA) no Brasil
+# Previsão da Inflação (IPCA) com Machine Learning no Brasil
 
+![Python](https://img.shields.io/badge/Python-3.9%2B-blue.svg)
+![Libraries](https://img.shields.io/badge/Bibliotecas-Scikit--learn%20%7C%20Pandas%20%7C%20BCB-orange.svg)
+![License](https://img.shields.io/badge/License-MIT-green.svg)
 
-## Versões do Modelo
+## 🎯 Objetivo do Projeto
 
-### 1. Modelo Básico (`ipca_inflation_forecast_basic.ipynb`)
-* **Features Utilizadas:** Apenas lags da própria série do IPCA (3 lags).
-* **Período dos Dados:** Janeiro de 2000 a Abril de 2025.
-* **Algoritmo:** Regressão Linear.
-* **Resultados no Conjunto de Teste (24 meses):**
-    * MAE: `0.2404` p.p.
-    * RMSE: `0.3347` p.p.
-* **Link para o Notebook:** [ipca_inflation_forecast_basic.ipynb](ipca_inflation_forecast_basic.ipynb)
+Este projeto demonstra um fluxo de trabalho completo de ciência de dados para prever a variação mensal do **IPCA (Índice Nacional de Preços ao Consumidor Amplo)**, o principal indicador de inflação do Brasil.
 
-### 2. Modelo Intermediário (`ipca_inflation_forecast_intermediary.ipynb`)
-* **Features Utilizadas:** Lags do IPCA (3 lags), lags da Taxa Selic (2 lags da média mensal da taxa diária) e lags da Taxa de Câmbio (2 lags da média mensal USD/BRL).
-* **Período dos Dados:** Janeiro de 2000 a Abril de 2025.
-* **Algoritmo:** Regressão Linear.
-* **Resultados no Conjunto de Teste (24 meses):**
-    * MAE: `0.2739` p.p.
-    * RMSE: `0.3534` p.p.
-* **Análise:** A inclusão das features de Selic e Câmbio, neste modelo linear simples, resultou em uma pequena piora no desempenho.
-* **Link para o Notebook:** [ipca_inflation_forecast_intermediary.ipynb](ipca_inflation_forecast_intermediary.ipynb)
+Partindo de um modelo simples, o projeto evolui de forma iterativa, incorporando mais dados e utilizando algoritmos mais sofisticados para aprimorar a precisão das previsões.
 
-### 3. Modelo Avançado (`ipca_inflation_forecast_advanced.ipynb`)
-* **Features Utilizadas:** Lags do IPCA (3 lags), lags da Taxa Selic (2 lags da média mensal da taxa diária) e lags da Taxa de Câmbio (2 lags da média mensal USD/BRL) - mesmo conjunto do intermediário.
-* **Período dos Dados:** Janeiro de 2000 a Abril de 2025.
-* **Algoritmo:** Random Forest Regressor com hiperparâmetros otimizados via GridSearchCV e validação cruzada para séries temporais (TimeSeriesSplit).
-* **Melhores Hiperparâmetros Encontrados:**
-    * `max_depth`: `10`
-    * `min_samples_leaf`: `2`
-    * `min_samples_split`: `5`
-    * `n_estimators`: `100`
-* **Resultados no Conjunto de Teste Final (24 meses):**
-    * MAE: `0.1262` p.p.
-    * RMSE: `0.1799` p.p.
-* **Análise:** O Random Forest otimizado apresentou uma melhora significativa no desempenho em relação aos modelos lineares, demonstrando a capacidade de um modelo não-linear em capturar relações mais complexas com as features macroeconômicas.
-* **Link para o Notebook:** [ipca_inflation_forecast_advanced.ipynb](ipca_inflation_forecast_advanced.ipynb)
+## 📊 Resumo dos Resultados
 
-## Tecnologias e Bibliotecas Utilizadas
+A principal conclusão do projeto é a eficácia de modelos não-lineares (como o Random Forest) em capturar as complexas relações das variáveis macroeconômicas. A tabela abaixo compara o desempenho dos três modelos desenvolvidos no mesmo conjunto de teste (últimos 24 meses).
+
+| Modelo | Algoritmo | MAE (p.p.) ↓ | RMSE (p.p.) ↓ | Análise Breve |
+| :--- | :--- | :---: | :---: | :--- |
+| **Básico** | Regressão Linear | `0.2404` | `0.3347` | Um ponto de partida razoável usando apenas a própria inflação passada. |
+| **Intermediário** | Regressão Linear | `0.2739` | `0.3534` | Piorou o desempenho, indicando que o modelo linear não conseguiu extrair valor da Selic e do Câmbio. |
+| **Avançado (Otimizado)** | **Random Forest** | **`0.1262`** | **`0.1799`** | **Melhor modelo.** Redução de ~47% no MAE e ~46% no RMSE em relação ao modelo básico. |
+
+*MAE = Erro Absoluto Médio; RMSE = Raiz do Erro Quadrático Médio. Valores menores são melhores.*
+
+## 📈 Evolução dos Modelos
+
+O projeto foi dividido em três etapas, cada uma contida em seu próprio notebook.
+
+#### 1. Modelo Básico (`ipca_inflation_forecast_basic.ipynb`)
+- **Descrição:** Um modelo autorregressivo simples que usa apenas os valores passados (lags) do próprio IPCA para fazer previsões.
+- **Features:** 3 lags do IPCA.
+- **Algoritmo:** `LinearRegression`.
+
+#### 2. Modelo Intermediário (`ipca_inflation_forecast_intermediary.ipynb`)
+- **Descrição:** Tentativa de aprimorar o modelo básico adicionando variáveis macroeconômicas exógenas.
+- **Features:** Lags do IPCA (3), Taxa Selic (2) e Taxa de Câmbio (2).
+- **Algoritmo:** `LinearRegression`.
+- **Conclusão:** A adição de novas variáveis em um modelo linear simples não foi suficiente para melhorar a performance, indicando a necessidade de um algoritmo mais robusto.
+
+#### 3. Modelo Avançado (`ipca_inflation_forecast_advanced.ipynb`)
+- **Descrição:** Utiliza um modelo não-linear e técnicas mais avançadas de validação e otimização para extrair o máximo de informação das features.
+- **Features:** As mesmas do modelo intermediário.
+- **Algoritmo:** `RandomForestRegressor`.
+- **Técnicas Chave:**
+    - **Validação Cruzada:** `TimeSeriesSplit` para uma avaliação robusta em dados temporais.
+    - **Otimização:** `GridSearchCV` para encontrar os melhores hiperparâmetros do modelo.
+- **Resultado:** Desempenho significativamente superior, validando a abordagem. A análise de importância de features mostrou que o `IPCA_lag1` é a variável mais preditiva, seguida pela Taxa Selic.
+
+## 🛠️ Tecnologias e Fontes de Dados
+
 * **Linguagem:** Python 3
-* **Bibliotecas Principais:** Pandas, NumPy, python-bcb, Matplotlib, Seaborn, Scikit-learn.
-* **Ambiente:** Google Colaboratory.
+* **Bibliotecas:** Pandas, NumPy, Scikit-learn, Matplotlib, Seaborn e `python-bcb`.
+* **Fonte dos Dados:** As séries temporais foram obtidas diretamente do **Sistema Gerenciador de Séries Temporais (SGS)** do Banco Central do Brasil via API.
+    * **IPCA:** Série 433
+    * **Taxa Selic:** Série 11
+    * **Taxa de Câmbio (USD/BRL):** Série 1
 
-## Fonte dos Dados
-* IPCA (variação mensal, código 433): Sistema Gerenciador de Séries Temporais (SGS) do Banco Central do Brasil.
-* Taxa Selic (diária efetiva, código 11): SGS/BCB.
-* Taxa de Câmbio (PTAX venda, código 1): SGS/BCB.
 
-## Como Executar os Projetos
-1.  Navegue para o notebook desejado (básico ou intermediário).
-2.  Abra-o em um ambiente compatível (Google Colab, Jupyter Notebook/Lab).
-3.  Execute as células do notebook em ordem. A biblioteca `python-bcb` será instalada se necessário.
+## 🔮 Próximos Passos e Melhorias
 
-* **Refinamento do Modelo Avançado:**
-    * Testar outras combinações de hiperparâmetros para o Random Forest.
-    * Aplicar engenharia de features mais sofisticada (transformações para estacionariedade, padronização, novas variáveis como expectativas do Focus, etc.).
-    * Analisar a importância das features do modelo otimizado para possível seleção.
-* **Explorar Outros Modelos:** Testar algoritmos como XGBoost, LightGBM, ou modelos econométricos como SARIMAX ou Prophet.
-* **Comparação Robusta:** Implementar um framework de backtesting mais completo.
-
-## Autor
-* Lucas Bernardo
-* **LinkedIn:** https://www.linkedin.com/in/bertsmz/
+-   **Engenharia de Features:** Testar novas variáveis (preços de commodities, índices de atividade econômica, expectativas do Boletim Focus).
+-   **Modelos Alternativos:** Experimentar outros algoritmos potentes como XGBoost, LightGBM ou modelos econométricos como SARIMAX.
+-   **Análise de Resíduos:** Aprofundar a análise de erros para identificar padrões não capturados.
+-   **Deploy:** Encapsular o melhor modelo em uma API simples usando Flask ou FastAPI para realizar previsões sob demanda.
