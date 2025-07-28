@@ -1,36 +1,50 @@
-# Empirical Econ Lab
+# 🔬 Empirical Econ Lab de Lucas Bernardo
+
+![Static Badge](https://img.shields.io/badge/Área-Economia%20Empírica-blue)
+![Static Badge](https://img.shields.io/badge/Ferramentas-Python%20%7C%20Data%20Science-orange)
 
 Bem-vindo(a) ao meu Laboratório de Economia Empírica!
 
-Este repositório é uma coleção de projetos onde aplico técnicas de econometria, ciência de dados e machine learning para analisar e modelar fenômenos econômicos. O objetivo é explorar dados do mundo real, extrair insights e, sempre que possível, construir modelos preditivos ou de inferência causal.
+Este repositório funciona como meu portfólio digital, onde aplico técnicas de **econometria, ciência de dados e machine learning** para analisar e modelar fenômenos econômicos. Minha formação em Ciências Econômicas me fornece a base teórica, e este espaço é onde coloco esses conhecimentos em prática com dados do mundo real.
 
-Minha formação em Ciências Econômicas me fornece a base teórica, e este espaço é onde coloco esses conhecimentos em prática utilizando ferramentas computacionais e estatísticas.
+## 🚀 Projetos em Destaque
 
-## Projetos Contidos Neste Repositório:
-
-Atualmente, este "lab" inclui os seguintes projetos principais (cada um em sua respectiva pasta):
-
-* **Previsão da Inflação (IPCA)** (Pasta: [`/inflation-forecast`](./inflation-forecast/))
-    * Descrição: Desenvolvimento de modelos para prever a variação mensal do IPCA brasileiro, desde modelos lineares simples até abordagens mais avançadas com Random Forest.
-    * Status: **Versão avançada com Random Forest Otimizado e features macroeconômicas concluída (MAE: 0.1262, RMSE: 0.1799 no teste final).** Próximos passos incluem explorar mais features e modelos como SARIMAX ou XGBoost.
-    * [Leia mais sobre este projeto (README específico)](./inflation-forecast/README.md)
-
-## Objetivos Gerais do Lab:
-* Aplicar métodos quantitativos a problemas econômicos.
-* Desenvolver habilidades em coleta, tratamento, análise e visualização de dados.
-* Construir e avaliar modelos econométricos e de machine learning.
-* Compartilhar aprendizados e códigos.
-
-## Tecnologias Frequentemente Utilizadas:
-* Python (Pandas, NumPy, Scikit-learn, Statsmodels, Matplotlib, Seaborn)
-* Jupyter Notebooks / Google Colab
-* Git e GitHub
-
-## Contato
-* Lucas Bernardo
-* LinkedIn: https://www.linkedin.com/in/bertsmz/
-* Email: lumatizerh@hotmail.com
+Cada projeto é autocontido em sua respectiva pasta e possui um `README.md` detalhado com a análise completa.
 
 ---
 
-Sinta-se à vontade para explorar os projetos!
+### 📈 Previsão da Inflação (IPCA)
+-   **Link:** [`/inflation-forecast`](./inflation-forecast/)
+-   **Descrição:** Desenvolvimento de um funil de modelagem para prever a variação mensal do IPCA no Brasil. O projeto evolui de um modelo linear simples para um modelo avançado de Random Forest, demonstrando um fluxo de trabalho iterativo de ciência de dados.
+-   **Status & Resultados:**
+    -   🟢 **Concluído:** Versão avançada com Random Forest Otimizado.
+    -   **MAE Final:** `0.1262` | **RMSE Final:** `0.1799`
+-   **Tecnologias:** `Scikit-learn`, `Pandas`, `python-bcb`, `Matplotlib`.
+
+
+---
+
+## 🎯 Objetivos Gerais deste Laboratório
+
+* Aplicar métodos quantitativos para responder perguntas sobre economia.
+* Desenvolver e demonstrar habilidades em todo o pipeline de dados: coleta, tratamento, análise e visualização.
+* Construir, avaliar e interpretar modelos econométricos e de machine learning.
+* Criar um portfólio robusto e compartilhar aprendizados com a comunidade.
+
+## 🛠️ Tech Stack Principal
+
+* **Linguagem:** Python
+* **Análise de Dados:** Pandas, NumPy
+* **Machine Learning:** Scikit-learn, XGBoost
+* **Econometria:** Statsmodels
+* **Visualização de Dados:** Matplotlib, Seaborn
+* **Ambiente de Desenvolvimento:** Jupyter Notebooks / Lab, VS Code
+* **Controle de Versão:** Git, GitHub
+
+## 📫 Contato
+
+Sinta-se à vontade para entrar em contato, conectar-se ou explorar os projetos!
+
+* **Lucas Bernardo**
+* **LinkedIn:** [linkedin.com/in/bertsmz](https://www.linkedin.com/in/bertsmz/)
+* **Email:** lumatizerh@hotmail.com
